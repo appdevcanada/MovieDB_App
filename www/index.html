@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommendations DataBase</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+    font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com;
+    script-src 'self' 'unsafe-eval';
+    connect-src 'self' ws: https://api.themoviedb.org/3/;
+    img-src 'self' data: content: https://image.tmdb.org https://www.themoviedb.org;">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" type="image/icon" href="favicon.ico">
+</head>
+
+<body>
+    <div class="mini-modal show">
+        <div class="flexg">
+            <div class="logoDB"><img id="logoMD" alt="The Movie DataBase" src="https://www.themoviedb.org/assets/1/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png" />
+            </div>
+            <div class="error" id="errormsg"></div>
+            <div class="searchButtonDiv sample one">
+                <input type="text" class="search" id="search-input" name="search" placeholder="Search">
+                <button type="submit" class="btn btn-search fa fa-search pointer"></button>
+            </div>
+            <div class="items-pages" id="items-count">
+            </div>
+            <div class="paging" id="pagings">
+            </div>
+            <div class="settingButtonDiv pointer grow">
+                <img id="modalButton" alt="Settings" title="Settings" data-src="icon/svg/smart/settings.svg" class="iconic iconic-md" data-file-extension="CCP4" />
+            </div>
+        </div>
+    </div>
+    <header></header>
+    <main>
+        <div class="page" id="search-results">&nbsp;
+        </div>
+
+        <div class="page" id="recommend-results">
+        </div>
+
+        <div class="overlay hide">&nbsp;</div>
+
+        <div class="modalw off">
+            <div class="modal-header">
+                <h3>Choose your Search</h3>
+            </div>
+            <div class="modal-radio">
+                <input type="radio" name="optSettings" value="movie" id="movie">
+                <label for="Movie" id="lbM">Movie</label>
+                <input type="radio" name="optSettings" value="tv" id="tv">
+                <label for="TV" id="lbT">TV</label>
+            </div>
+            <button class="cancelButton">Cancel</button>
+            <button class="saveButton">Save</button>
+        </div>
+
+    </main>
+    <footer>
+        <p><img id="logoFooter" alt="Powered by The Movie DataBase" src="https://www.themoviedb.org/assets/1/v4/logos/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png" />
+        </p>
+    </footer>
+    <script src="cordova.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/iconic.min.js"></script>
+    <script src="js/key.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

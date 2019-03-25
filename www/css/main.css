@@ -1,0 +1,540 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+/*************************************************
+                DEFAULTS
+*************************************************/
+*,
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    align-content: center;
+    text-align: center;
+    font-family: Ubuntu, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.2rem;
+}
+
+:root {
+    --bd-top: 1rem solid hsl(142, 70%, 40%);
+    --b-bdr: 1px solid hsl(142, 70%, 40%);
+    --h-txt-sdw: 2px 2px 2px hsl(1, 0%, 20%);
+    --h-clr: hsl(142, 70%, 40%);
+    --h-bg-clr: hsl(1, 0%, 90%);
+    --b-bg-clr: hsl(1, 0%, 50%);
+    --b-h-bg-clr: hsl(142, 70%, 30%);
+    --i-clr: hsl(1, 0%, 30%);
+    --i-box-sdw: 2px 2px 3px 1px hsl(1, 0%, 50%);
+}
+
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+/*************************************************
+                MODALS / OVERLAYS
+*************************************************/
+#modalButton {
+    position: relative;
+    left: 25%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: hsla(0, 0%, 0%, 0.8);
+    cursor: pointer;
+}
+
+.modalw {
+    position: fixed;
+    width: 350px;
+    height: 250px;
+    z-index: 200;
+    top: calc((100% - 250px)/2);
+    left: calc((100% - 350px)/2);
+    line-height: 1.5rem;
+    color: hsl(0, 0%, 33%);
+    background-color: hsl(0, 0%, 93%);
+    border-radius: 10px;
+}
+
+.mini-modal {
+    position: fixed;
+    width: 100%;
+    height: 110px;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    line-height: 1.5rem;
+    color: hsl(135, 94%, 90%);
+    background-color: hsla(150, 100%, 10%, 0.8);
+}
+
+.show,
+.page {
+    display: block;
+}
+
+.hide {
+    display: none !important;
+}
+
+.off {
+    transform: translateY(-400%);
+}
+
+.on {
+    transform: translateY(0);
+}
+
+.cancelButton,
+.saveButton {
+    width: 100px;
+    position: absolute;
+    border: none;
+    background-color: hsl(150, 100%, 10%);
+    color: hsl(0, 100%, 100%);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.1rem;
+}
+
+.saveButton {
+    bottom: 1rem;
+    right: 2rem;
+}
+
+.cancelButton {
+    bottom: 1rem;
+    left: 2rem;
+}
+
+.modal-header {
+    padding: 0.8rem;
+    background-color: hsl(150, 100%, 30%);
+    color: hsl(0, 100%, 100%);
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+    margin-top: 10px
+}
+
+.modal-radio {
+    text-align: center;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-areas:
+        "rbM lbM"
+        "rbT lbT";
+    grid-template-columns: 1fr 1fr;
+}
+
+#movie {
+    grid-area: rbM;
+    justify-self: end;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+#tv {
+    grid-area: rbT;
+    justify-self: end;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+#lbM {
+    grid-area: lbM;
+    justify-self: start;
+}
+
+#lbT {
+    grid-area: lbT;
+    justify-self: start;
+}
+
+.modal-radio label {
+    font-size: 1.2rem;
+}
+
+/*************************************************
+                SEARCH BOX
+*************************************************/
+input.search {
+    border: 2px solid hsla(150, 100%, 10%, 0.8);
+    font-size: 1rem;
+    height: 30px;
+    padding: 4px 8px;
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    text-indent: 10px;
+}
+
+input.search:focus {
+    outline: none;
+    border: 2px solid #15C970;
+}
+
+button:focus {
+    outline: none;
+}
+
+button.btn-search {
+    background: #15C970;
+    border: none;
+    height: 30px;
+    font-size: 12px;
+    padding: 4px;
+    position: absolute;
+    width: 30px;
+}
+
+.sample {
+    grid-area: s;
+    float: left;
+    height: 60px;
+    position: relative;
+    width: 100%;
+}
+
+.sample.one input {
+    border-radius: 15px;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+}
+
+.sample.one input.search:focus {
+    width: 90%;
+}
+
+.sample.one input:focus ~ button.btn-search {
+    background: #15C970;
+    color: #fff;
+}
+
+.sample.one button {
+    transition: all 0.3s ease-in-out;
+}
+
+.sample.one button.btn-search {
+    background: hsla(150, 100%, 10%, 0.8);
+    border-radius: 50%;
+    height: 26px;
+    right: 2px;
+    top: 2px;
+    transition: all 0.3s ease-in-out;
+    width: 26px;
+}
+
+
+/*************************************************
+                    GENERAL
+*************************************************/
+
+.iconic * {
+    fill: #15C970;
+    stroke: hsl(1, 0%, 100%);
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+}
+
+button,
+input {
+    font-family: Ubuntu, Helvetica, Arial, sans-serif;
+    padding: 0.4rem;
+    font-size: 1rem;
+}
+
+.flexg {
+    display: grid;
+    grid-template-areas:
+        "l m c"
+        "l s c"
+        "l q c"
+        "l p c";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-auto-rows: 25px 30px 30px 25px;
+    height: 110px;
+    align-content: start;
+    justify-self: start;
+}
+
+.logoDB {
+    grid-area: l;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: 16px;
+    justify-self: start;
+}
+
+#logoMD {
+    width: 70px;
+    height: 77px;
+}
+
+#errormsg {
+    grid-area: m;
+    justify-content: center;
+    color: hsl(60, 100%, 50%);
+    font-size: 1.1rem;
+    align-self: baseline;
+}
+
+.searchButtonDiv {
+    grid-area: s;
+    align-self: start;
+    justify-self: start;
+    margin: 0;
+}
+
+#items-count {
+    grid-area: q;
+    justify-content: center;
+    align-self: end;
+    font-size: 1.1rem;
+}
+
+#pagings {
+    grid-area: p;
+    justify-content: center;
+    align-self: baseline;
+}
+
+.settingButtonDiv {
+    grid-area: c;
+    margin-top: 39px;
+    margin-right: 20px;
+    justify-self: end;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+main {
+    min-height: 700px;
+}
+
+
+/*************************************************
+            HEADER
+*************************************************/
+header {
+    margin-top: 120px;
+}
+
+
+/*************************************************
+            MAIN CONTENT
+*************************************************/
+
+button {
+    color: var(--h-bg-clr);
+    background-color: var(--b-bg-clr);
+    font-size: 1.1rem;
+    border: var(--b-bdr);
+    border-radius: 4px;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+    text-align: center;
+}
+
+button:hover {
+    background-color: var(--b-h-bg-clr);
+    box-shadow: var(--b-h-box-sdw);
+    cursor: pointer;
+}
+
+#search-results,
+#recommend-results {
+    clear: both;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}
+
+.grow {
+    transition: all 0.5s ease;
+}
+
+.grow:hover {
+    transform: scale(1.2);
+}
+
+.title {
+    margin: 5px;
+    display: grid;
+    grid-template-areas:
+        "im tt"
+        "im dt"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx"
+        "im tx";
+    grid-template-columns: 185px 1fr;
+    width: 30%;
+    background-color: hsl(142, 70%, 10%);
+    color: hsl(0, 0%, 100%);
+    align-content: start;
+    justify-self: start;
+}
+
+.image {
+    grid-area: im;
+    justify-self: start;
+    min-height: 278px;
+}
+
+.nameTitle {
+    grid-area: tt;
+    align-self: start;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: hsl(142, 70%, 70%);
+    margin-right: 10px;
+    font-family: 'Bree Serif', Times, 'Times New Roman', serif;
+    min-height: 20px;
+}
+
+.date {
+    grid-area: dt;
+    align-self: start;
+    margin-right: 10px;
+    max-height: 20px;
+}
+
+.txtTitle {
+    grid-area: tx;
+    align-self: start;
+    text-align: justify;
+    margin-right: 10px;
+    margin-left: 10px;
+    max-height: 238px;
+}
+
+.txtTitle p {
+    text-align: justify;
+    align-self: start;
+}
+
+#max,
+#digits {
+    font-size: 1rem;
+    color: var(--i-clr);
+    box-shadow: var(--i-box-sdw);
+}
+
+
+/*************************************************
+            FOOTER
+*************************************************/
+footer {
+    background-color: hsl(1, 0%, 10%);
+    color: hsl(0, 100%, 100%);
+    width: 100%;
+    height: 86px;
+}
+
+#logoFooter {
+    margin-top: 20px;
+    width: 110px;
+    height: 50px;
+}
+
+
+/*************************************************
+            MEDIA QUERIES for layout
+*************************************************/
+@media (max-width: 599px) {
+
+    main {
+        min-height: calc(100vh - 206px);
+    }
+
+    footer {
+        font-size: 1.2rem;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+    .logoDB {
+        margin-left: 10px;
+    }
+
+    #items-count, #errormsg {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (min-width: 600px) and (max-width:999px) {
+
+    main {
+        min-height: calc(100vh - 206px);
+    }
+
+    footer {
+        font-size: 1.3rem;
+    }
+
+    .title {
+        width: 90%;
+    }
+}
+
+@media (min-width: 1000px) and (max-width:1299px) {
+
+    main {
+        min-height: calc(100vh - 206px);
+    }
+
+    footer {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        width: 46%;
+    }
+}
+
+@media (min-width: 1300px) {
+
+    main {
+        min-height: calc(100vh - 206px);
+    }
+
+    footer {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        width: 32%;
+    }
+}
